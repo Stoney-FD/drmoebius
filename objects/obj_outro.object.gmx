@@ -25,13 +25,18 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 1;
+            <string>image_speed = 0;
+tim2 = 0;
+sound_stop(bgm_bgm);
+sound_play(bgm_outro);
+
+tim2 = 30;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="7">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -48,7 +53,35 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//supertolles ende hier einfügen
+            <string>if(keyboard_check_pressed(ord('M'))){
+    global.muted = !global.muted;
+    
+    if(global.muted){
+        sound_stop(bgm_outro);
+    }
+    else{
+        sound_play(bgm_outro);
+        tim2 = 30;
+    }
+}
+else if(keyboard_check_pressed(vk_anykey) || mouse_check_button_pressed(mb_left)){
+    if(image_index + 1 &gt;= image_number){
+        sound_stop(bgm_outro);
+        game_end();
+    }
+    else{
+        image_index += 1;
+    }
+}
+
+if(fps != 0 &amp;&amp; !global.muted){
+    tim2 -= 1 / fps;
+    
+    if(tim2 &lt; 0){
+        sound_play(bgm_outro);
+        tim2 = 30;
+    }
+}
 </string>
           </argument>
         </arguments>

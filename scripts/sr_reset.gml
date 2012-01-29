@@ -78,3 +78,5 @@ if(argument0){
         c_time = max_time;
     }
 }
+
+sound_play(sfx_revert);

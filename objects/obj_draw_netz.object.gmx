@@ -29,6 +29,11 @@
 //instance_deactivate_all(true);
 obj_player.visible = false;
 alarm[0] = fps;
+sound_play(sfx_glass);
+var ii;
+ii = instance_create(x, y, obj_text)
+ii.txt = "Out of time";
+ii.col = c_red;
 </string>
           </argument>
         </arguments>
@@ -56,6 +61,7 @@ alarm[0] = fps;
 obj_player.visible = true;
 sr_reset(true);
 instance_destroy();
+with(obj_text) instance_destroy();
 </string>
           </argument>
         </arguments>

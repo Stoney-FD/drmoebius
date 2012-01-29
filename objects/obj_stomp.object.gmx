@@ -32,6 +32,8 @@ xs = xstart;
 ys = ystart;
 
 ups = 5;
+
+image_angle = 0;
 </string>
           </argument>
         </arguments>

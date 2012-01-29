@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>alarm[0] = fps;
+            <string>maxal = fps;
+alarm[0] = maxal;
 
 rad = 0;
 crad = 0;
@@ -36,6 +37,11 @@ grow = 10;
 
 //instance_deactivate_all(true);
 obj_player.visible = false;
+
+var ii;
+ii = instance_create(x, y, obj_text)
+ii.txt = "Time extended";
+ii.col = c_white;
 </string>
           </argument>
         </arguments>
@@ -61,8 +67,9 @@ obj_player.visible = false;
             <string>//sprite_delete(back);
 //instance_activate_all();
 obj_player.visible = true;
-sr_reset(true);
+//sr_reset(true);
 instance_destroy();
+with(obj_text) instance_destroy();
 </string>
           </argument>
         </arguments>
@@ -117,6 +124,7 @@ draw_circle(x, y, crad, false);//view_xview[0], view_yview[0], view_xview[0] + v
 draw_set_alpha(1);
 draw_set_color(c_white);
 //draw_set_blend_mode(bm_normal);
+draw_sprite_ext(spr_sanduhr, -1, x, y, 1, 1, 180 / maxal * (maxal - alarm[0]), c_white, 1);
 </string>
           </argument>
         </arguments>

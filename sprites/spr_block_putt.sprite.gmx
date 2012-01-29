@@ -8,7 +8,7 @@
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
   <bbox_right>63</bbox_right>
-  <bbox_top>0</bbox_top>
+  <bbox_top>51</bbox_top>
   <bbox_bottom>63</bbox_bottom>
   <frames>
     <frame index="0">images\spr_block_putt_0.png</frame>

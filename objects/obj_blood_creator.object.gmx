@@ -72,6 +72,7 @@ alph = 0;
     x = obj_player_spawner.x;//xstart;
     y = obj_player_spawner.y;//ystart;
     visible = true;
+    //instance_create(x, y, obj_draw_netz);
 }
 instance_destroy();
 </string>

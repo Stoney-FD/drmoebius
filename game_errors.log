@@ -1,8 +1,9 @@
 ERROR in
 action number 1
-of Draw Event
-for object obj_disappear_block:
+of Create Event
+for object obj_player:
 
-Trying to draw non-existing sprite.
+Error in code at line 10:   
+if(!global.muted) sound_play(bgm_bgm);              ^at position 13: Unknown variable muted
 
 

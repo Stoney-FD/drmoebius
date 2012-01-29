@@ -67,6 +67,7 @@ else{
         else break;
     }
     ii = instance_create(x, y, static);
+    sound_play(sfx_bump);
     ii.xs = xs;
     ii.ys = ys;
     instance_destroy();
@@ -76,7 +77,7 @@ if(place_meeting(x, y, obj_spikes)){
     ii = instance_create(x, y, obj_placeholder);
     ii.xs = xs;
     ii.ys = ys;
-    ii.original = object_index;
+    ii.original = static;
     instance_destroy();
 }
 </string>

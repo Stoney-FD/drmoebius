@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>max_time = 13;
-c_time = max_time;
-scale = 5;
-
-
+            <string>scale = 5;
 var surf;
 surf = surface_create(view_wview[0], 28);
 
@@ -43,6 +39,34 @@ for(i = 10; i &lt; view_wview[0] - 10 ; i += scale){
 surface_reset_target();
 back = sprite_create_from_surface(surf, 0,0, surface_get_width(surf), surface_get_height(surf), true, false, 0, 0);
 surface_free(surf);
+
+init = false;
+alarm[0] = 1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//max_time = 13;
+c_time = max_time;
+init = true;
 </string>
           </argument>
         </arguments>
@@ -65,7 +89,8 @@ surface_free(surf);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(c_time &gt;= 0 &amp;&amp; obj_player.visible){
+            <string>if(init){
+if(c_time &gt;= 0 &amp;&amp; obj_player.visible){
     if(fps &gt; 0){
         c_time -= 1/fps;
     }
@@ -73,6 +98,11 @@ surface_free(surf);
     if(c_time &lt; 0){
         instance_create(x, y, obj_draw_netz);
     }
+}
+}
+
+if(keyboard_check_pressed(ord('R'))){
+    instance_create(x, y, obj_draw_netz);
 }
 /*
 var rim;
@@ -108,19 +138,21 @@ instance_activate_object(obj_timer);*/
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(back, -1, view_xview[0], view_yview[0]);
+            <string>if(init){
+//draw_sprite(back, -1, view_xview[0], view_yview[0]);
 
-draw_set_color(c_navy);
+draw_set_color(c_green);
 draw_set_alpha(0.5);
 draw_rectangle(view_xview[0] + 10, view_yview[0] + 6, view_xview[0] + 10 + max_time * scale, view_yview[0] + 24, false);
 draw_set_alpha(1);
 draw_set_color(c_blue);
-draw_rectangle(view_xview[0] + 10, view_yview[0] + 10, view_xview[0] + 10 + c_time * scale, view_yview[0] + 20, false);
+draw_rectangle(view_xview[0] + 10, view_yview[0] + 10, view_xview[0] + 10 + max(0, c_time * scale), view_yview[0] + 20, false);
 draw_set_color(c_black);
-draw_rectangle(view_xview[0] + 10, view_yview[0] + 10, view_xview[0] + 10 + c_time * scale, view_yview[0] + 20, true);
+draw_rectangle(view_xview[0] + 10, view_yview[0] + 10, view_xview[0] + 10 + max(0, c_time * scale), view_yview[0] + 20, true);
 //draw_text(view_xview[0] + 10, view_yview[0] + 10, string(c_time));
 
 if(obj_player.is_debug) draw_text(view_xview[0] + view_wview[0] - 20, view_yview[0] + 10, string(fps));
+}
 </string>
           </argument>
         </arguments>
